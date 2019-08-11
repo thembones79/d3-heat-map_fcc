@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: antiquewhite;
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.canvas {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  text-align: center;
+  flex-direction: column;
+  width: 1440px;
+  height: 800px;
+  box-shadow: 1px 24px 58px #0000004f;
+  border-radius: 24px;
+}
+
+.bar:hover {
+  fill: purple;
+}
+
+#title > h1 {
+  font-weight: 100;
+  color: #8888888f;
+  font-size: 3em;
+  margin-left: 90px;
+  margin-bottom: 50px;
+}
+
+#tooltip {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  text-align: center;
+  flex-direction: column;
+
+  padding: 20px;
+  font: 18px;
+  background: #00de88;
+  box-shadow: 1px 4px 28px #00de88;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+circle {
+  fill: red;
+  opacity: 0.4;
+}
+
+text {
+  font-family: sans-serif;
+}
+
+.tick text {
+  font-size: 1.2em;
+  fill: #635F5D;
+}
+
+.tick line {
+  stroke: black;
+}
+
+.axis-label {
+  font-size: 2em;
+  fill: #777;
+}
+
+.title {
+  font-size: 2em;
+  fill: #777;
+}
+
+.legend {
+  fill: #777;
+}
