@@ -42,7 +42,7 @@ body {
   color: #8888888f;
   font-size: 3em;
   margin-left: 90px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 #tooltip {
@@ -68,6 +68,14 @@ circle {
 
 text {
   font-family: sans-serif;
+}
+
+.smaller_text{
+ font-size: 0.8em;
+}
+
+.bigger_text{
+  font-size: 1.4em;
 }
 
 .tick text {

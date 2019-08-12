@@ -1,6 +1,6 @@
 "use strict";
 
-const title = `35 Fastest times up Alpe d'Huez`;
+const title = `1753 - 2015: base temperature 8.66°C`;
 
 const svg = d3.select("svg");
 
@@ -14,9 +14,9 @@ const render = data => {
   const yValue = d => d.month;
   const yAxisLabel = "Month";
   const temperature = d => d.variance + baseTemperature;
-  const circleRadius = 9;
+
   const rectWidth = 10;
-  const rectHeight = 30;
+
   const margin = { top: 50, right: 40, bottom: 120, left: 90 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
@@ -90,23 +90,23 @@ const render = data => {
     .style("fill", d => color(d.variance + baseTemperature))
 
     .on("mouseover", (d, i) => {
-      tooltip.style("opacity", 0.9);
+      tooltip.style("opacity", 0.8);
       tooltip
         .html(
           `
-       <p><strong>Year: ${d.year}</strong>, Month: ${months[d.month - 1]}</p>
-       <p>
-       Change: ${d.variance},
-       Temperature: ${temperature(d)}
-
-       </p>
-
+       <p class="smaller_text"><strong>${months[d.month - 1]}, ${
+            d.year
+          }</strong></p>
+       <p class="bigger_text"><strong>${d3.format(".2f")(
+         temperature(d)
+       )}°C</strong></p>
+       <p class="smaller_text">(Change: ${d3.format(".2f")(d.variance)}°C)</p>
        `
         )
         .attr("data-year", d.year)
         .style("left", xScale(xValue(d)) + "px")
         .style("top", yScale(yValue(d)) + "px")
-        .style("transform", `translate(130px,20px)`);
+        .style("transform", `translate(135px,95px)`);
     })
     .on("mouseout", d => {
       tooltip.style("opacity", 0);
@@ -153,7 +153,7 @@ const render = data => {
   xAxisG
     .append("text")
     .attr("class", "axis-label")
-    .attr("y", 65)
+    .attr("y", 45)
     .attr("x", innerWidth / 2)
     .text(xAxisLabel);
 
@@ -169,7 +169,7 @@ const render = data => {
     .attr("id", "legend")
     .style(
       "transform",
-      `translate(150px,${innerHeight + margin.bottom - 20}px)`
+      `translate(300px,${innerHeight + margin.bottom - 20}px)`
     );
 
   legend.append("text").text("Legend:");
@@ -215,23 +215,26 @@ const render = data => {
     .attr("height", yScale.bandwidth() / 2)
     .style("fill", d => color(d));
 
-  const zAxis = d3
+  const legendAxisTickFormat = number =>
+    d3
+      .format(".0f")(number)
+      .replace(number, number + "°C");
+
+  const legendAxis = d3
     .axisBottom(legendScale)
     // .tickSize(-innerHeight)
-    .tickPadding(2);
-  // .tickFormat(d3.format(".1f"));
+    .tickPadding(2)
+    .tickFormat(legendAxisTickFormat);
   //.ticks(8)
 
-  const zAxisG = g
+  const legendAxisG = g
 
     .append("g")
-    .call(zAxis)
+    .call(legendAxis)
     .attr("id", "x-axis")
-    .attr("transform", `translate(0,${innerHeight + 100})`);
+    .attr("transform", `translate(150,${innerHeight + 100})`);
 
   // xAxisG.select(".domain").remove();
-
-
 };
 
 /*
