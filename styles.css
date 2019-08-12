@@ -33,7 +33,7 @@ body {
   border-radius: 24px;
 }
 
-.bar:hover {
+.dot:hover {
   fill: purple;
 }
 
@@ -52,7 +52,6 @@ body {
   position: absolute;
   text-align: center;
   flex-direction: column;
-
   padding: 20px;
   font: 18px;
   background: #00de88;
@@ -61,10 +60,7 @@ body {
   pointer-events: none;
 }
 
-circle {
-  fill: red;
-  opacity: 0.4;
-}
+
 
 text {
   font-family: sans-serif;
